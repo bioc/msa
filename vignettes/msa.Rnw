@@ -83,15 +83,16 @@ first have to read introductory literature on the subjects mentioned above.
 
 \section{Introduction}
 Multiple sequence alignment is one of the most fundamental tasks in
-bioinformatics. Algorithms like ClustalW~\cite{Thompson1994},
+bioinformatics. Algorithms like ClustalW~\cite{Thompson1994,Larkin2007},
 ClustalOmega~\cite{Sievers2011}, and MUSCLE~\cite{Edgar2004b,Edgar2004a}
-are well known and
-widely used. However, all these algorithms are implemented as stand-alone
+are well known and widely used (for more comprehensive overviews of methods,
+see \cite{Edgar2006,Notredame2007,Wallace2005}).
+However, all these algorithms are implemented as stand-alone
 commmand line programs without any integration into the R/Bioconductor
 ecosystem. Before the \MSA\ package, only the \verb+muscle+ package has
 been available in \R, but no other multiple sequence alignment algorithm,
 although the \verb+Biostrings+ package has provided data types for
-representing multiple sequence alignments for quite some time.
+representing multiple sequence alignments for quite some time \cite{Pages2015}.
 The \MSA\ package aims to close that gap by
 providing a unified R interface to the multiple sequence alignment algorithms
 ClustalW, ClustalOmega, and MUSCLE. The package requires no additional
@@ -541,12 +542,6 @@ has a minor memory leak, but the loss of data is so small that no major
 problems are to be expected except for thousands of executions of
 ClustalOmega.
 
-\subsubsection*{\shade: Alignment of Sequence Logos}
-
-\shade\ has some issues with aligning the sequence logo to the multiple
-sequence alignment. Under which conditions this happens, would require a
-more detailed investigation.
-
 \subsubsection*{ClustalOmega vs.\ Older GCC Versions on Linux/Unix}
 
 We have encountered peculiar behavior of ClustalOmega if the package was
@@ -562,7 +557,7 @@ to update to a newer GCC version and re-install the package.
 \subsubsection*{ClustalOmega: OpenMP Support on Mac OS}
 
 ClustalOmega is implemented to make use of OpenMP (if available on the
-target platform). Due to issues on one of the Bioconductor build servers
+target platform) \cite{Dagum1998}. Due to issues on one of the Bioconductor build servers
 running Mac OS, we had to deactivate OpenMP generally for Mac OS platforms.
 If a Mac OS user wants to re-activate OpenMP, he/she should download the
 source package tarball, untar it, comment/uncomment the corresponding line in
@@ -580,7 +575,8 @@ function. This interface will be improved in future versions.
 We envision the following changes/extensions in future versions of the package:
 \begin{itemize}
   \item Integration of more multiple sequence alignment algorithms, such as,
-    T-Coffee \cite{Notredame2000} or DIALIGN \cite{Morgenstern1999}
+    T-Coffee \cite{Notredame2000} or others
+    \cite{Brudno2003,Loytynoja2012,Morgenstern1999,Szalkowski2012}
   \item Support for retrieving guide trees from the multiple sequence
     alignment algorithms
   \item Interface to methods computing phylogenetic trees (e.g.\ as
@@ -595,10 +591,12 @@ We envision the following changes/extensions in future versions of the package:
 \section{How to Cite This Package}
 
 If you use this package for research that is published later, you are kindly
-asked to cite it as follows:
+asked to cite it as follows \cite{Bodenhofer2015}:
 \begin{quotation}
-\noindent E.~Bonatesta, C.~Horejs-Kainrath, and U.~Bodenhofer, (2015).
-msa: An R Package for Multiple Sequence Alignment.
+\noindent U.~Bodenhofer, E.~Bonatesta, C.~Horej\v{s}-Kainrath, and Sepp Hochreiter(2015).
+msa: an R Package for multiple sequence alignment.
+{\em Bioinformatics} (accepted). DOI:
+\href{http://dx.doi.org/10.1093/bioinformatics/btv494}{10.1093/bioinformatics/btv494}.
 \end{quotation}
 To obtain a Bib\TeX\ entries of the reference, enter the
 following into your R session:
@@ -613,6 +611,11 @@ bibliography below).
 \section{Change Log}
 
 \begin{description}
+\item[Version 1.0.2:] \mbox{ } \newline
+  \begin{itemize}
+    \item fix of improperly aligned sequence logos produced by \verb+msaPrettyPrint()+
+    \item updated citation information
+  \end{itemize}
 \item[Version 1.0.1:] fix of \verb+msa()+ function
 \item[Version 1.0.0:] first official release as part of Bioconductor 3.1
 \end{description}
@@ -628,6 +631,22 @@ E.~Beitz.
   using {\LaTeX2e}.
 \newblock {\em Bioinformatics}, 16(2):135--139, 2000.
 
+\bibitem{Bodenhofer2015}
+U.~Bodenhofer, E.~Bonatesta, C.~Horej\v{s}-Kainrath, and S.~Hochreiter.
+\newblock {msa}: an {R} package for multiple sequence alignment.
+\newblock {\em Bioinformatics}, 2015.
+\newblock (accepted).
+
+\bibitem{Brudno2003}
+M.~Brudno, M.~Chapman, B.~G\"ottgens, S.~Batzoglou, and B.~Morgenstern.
+\newblock Fast and sensitive multiple alignment of large genomic sequences.
+\newblock {\em BMC Bioinformatics}, 4:66, 2003.
+
+\bibitem{Dagum1998}
+L.~Dagum and R.~Menon.
+\newblock {OpenMP}: an industry standard {API} for shared-memory programming.
+\newblock {\em Computational Science \&\ Engineering, IEEE}, 5(1):46--55, 1998.
+
 \bibitem{Edgar2004b}
 R.~C. Edgar.
 \newblock {MUSCLE}: a multiple sequence alignment method with reduced time and
@@ -640,11 +659,23 @@ R.~C. Edgar.
   throughput.
 \newblock {\em Nucleic Acids Res.}, 32(5):1792--1797, 2004.
 
+\bibitem{Edgar2006}
+R.~C. Edgar and S.~Batzoglou.
+\newblock Multiple sequence alignment.
+\newblock {\em Curr. Opin. Struct. Biol.}, 16(3):368--373, 2006.
+
 \bibitem{Lamport1999}
 L.~Lamport.
 \newblock {\em {\LaTeX} --- A Document Preparation System. User's Guide and
   Reference Manual}.
 \newblock Addison-Wesley Longman, Amsterdam, 1999.
+
+\bibitem{Larkin2007}
+M.~A. Larkin, G.~Blackshields, N.~P. Brown, R.~Chenna, P.~A. McGettigan,
+  H.~McWilliam, F.~Valentin, I.~M. Wallace, A.~Wilm, R.~Lopez, J.~D. Thompson,
+  T.~J. Gibson, and D.~G. Higgins.
+\newblock {Clustal W} and {Clustal X} version 2.0.
+\newblock {\em Bioinformatics}, 23(21):2947--2948, 2007.
 
 \bibitem{Leisch2002}
 F.~Leisch.
@@ -653,6 +684,12 @@ F.~Leisch.
 \newblock In W.~H\"ardle and B.~R\"onz, editors, {\em Compstat 2002 ---
   Proceedings in Computational Statistics}, pages 575--580, Heidelberg, 2002.
   Physica-Verlag.
+
+\bibitem{Loytynoja2012}
+A.~L\"oytynoja, A.~J. Vilella, and N.~Goldman.
+\newblock Accurate extension of multiple sequence alignments using a
+  phylogeny-aware graph algorithm.
+\newblock {\em Bioinformatics}, 28(13):1684--1691, 2012.
 
 \bibitem{Morgenstern1999}
 B.~Morgenstern.
@@ -666,11 +703,22 @@ N.~Nethercote and J.~Seward.
 \newblock In {\em Proc. of the ACM SIGPLAN 2007 Conf. on Programming Language
   Design and Implementation}, San Diego, CA, 2007.
 
+\bibitem{Notredame2007}
+C.~Notredame.
+\newblock Recent evolutions of multiple sequence alignment algorithms.
+\newblock {\em PLoS Comput. Biol.}, 3(8):e123, 2007.
+
 \bibitem{Notredame2000}
 C.~Notredame, D.~G. Higgins, and J.~Heringa.
 \newblock {T-Coffee}: A novel method for fast and accurate multiple sequence
   alignment.
 \newblock {\em J. Mol. Biol.}, 302(1):205--217, 2000.
+
+\bibitem{Pages2015}
+H.~Pag\`es, P.~Aboyoun, R.~Gentleman, and S.~DebRoy.
+\newblock {\em Biostrings: String objects representing biological sequences,
+  and matching algorithms}, 2015.
+\newblock R package version 2.36.1.
 
 \bibitem{Sievers2011}
 F.~Sievers, A.~Wilm, D.~Dineen, T.~J. Gibson, K.~Karplus, W.~Li, R.~Lopez,
@@ -679,12 +727,23 @@ F.~Sievers, A.~Wilm, D.~Dineen, T.~J. Gibson, K.~Karplus, W.~Li, R.~Lopez,
   alignments using {Clustal Omega}.
 \newblock {\em Mol. Syst. Biol.}, 7:539, 2011.
 
+\bibitem{Szalkowski2012}
+A.~M. Szalkowski.
+\newblock Fast and robust multiple sequence alignment with phylogeny-aware gap
+  placement.
+\newblock {\em BMC Bioinformatics}, 13:129, 2012.
+
 \bibitem{Thompson1994}
 J.~D. Thompson, D.~G. Higgins, and T.~J. Gibson.
 \newblock {CLUSTAL W}: improving the sensitivity of progressive multiple
   sequence alignment through sequence weighting, position-specific gap
   penalties and weight matrix choice.
 \newblock {\em Nucleic Acids Res.}, 22(22):4673--4680, 2004.
+
+\bibitem{Wallace2005}
+I.~M. Wallace, G.~Blackshields, and D.~G. Higgins.
+\newblock Multiple sequence alignments.
+\newblock {\em Curr. Opin. Struct. Biol.}, 15(3):261--266, 2005.
 
 \bibitem{Xie2014}
 Y.~Xie.

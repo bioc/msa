@@ -1,6 +1,10 @@
 Change history of package msa:
 ==============================
 
+Version 1.0.2:
+- fix of improperly aligned sequence logos produced by msaPrettyPrint()
+- updated citation information
+
 Version 1.0.1:
 - fix of msa() function
 
