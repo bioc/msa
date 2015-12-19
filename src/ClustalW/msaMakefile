@@ -8,6 +8,6 @@ clustalw:
 	./configure; \
 	cd src; \
 	export PKG_CXXFLAGS="-DHAVE_CONFIG_H -I. $(PKG_CXXFLAGS)"; \
-	R CMD SHLIB -o libClustalW.so $(CPPNames) && \
+	${R_HOME}/bin/R CMD SHLIB -o libClustalW.so $(CPPNames) && \
 	ar rcs libClustalW.a $(OBJNames) && \
 	cp libClustalW.a ../../

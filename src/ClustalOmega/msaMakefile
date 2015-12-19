@@ -47,6 +47,6 @@ clustalomega:
 	export PKG_CXXFLAGS="$(PKG_CXXFLAGS) $(SHLIB_OPENMP_CXXFLAGS) -fPIC -DHAVE_CONFIG_H -I. -DCLUSTALO -DCLUSTALO_NOFILE -DDEFAULT_FILTER=90 -I../../gc-7.2/include"; \
 	export PKG_CFLAGS="$(PKG_CFLAGS) $(SHLIB_OPENMP_CFLAGS) -fPIC -DHAVE_CONFIG_H -I. -DCLUSTALO -DCLUSTALO_NOFILE -DDEFAULT_FILTER=90 -I../../gc-7.2/include"; \
 	cd src; \
-	R CMD SHLIB -o libClustalOmega.so $(CPPNames) && \
+	${R_HOME}/bin/R CMD SHLIB -o libClustalOmega.so $(CPPNames) && \
 	ar rcs libClustalOmega.a $(OBJNames) && \
 	cp libClustalOmega.a ../../
