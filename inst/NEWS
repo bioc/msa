@@ -1,6 +1,10 @@
 Change history of package msa:
 ==============================
 
+Version 1.4.4:
+- bug fix in msaClustalW(): unsupported parameter 'tree' deactivated
+- fixes in ClustalOmega source code to ensure GCC 6 compatibility
+
 Version 1.4.3:
 - minor changes in package vignette
 
