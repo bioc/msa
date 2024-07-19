@@ -54,6 +54,8 @@ using std::endl;
 using std::ios;
 using std::ifstream;
 using std::ofstream;
+using std::isinf;
+using std::isnan;
 
 int iAux_GLOBAL;
 
