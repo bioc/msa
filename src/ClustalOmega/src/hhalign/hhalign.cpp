@@ -37,11 +37,15 @@
 #include <stdio.h>    // printf
 #include <stdlib.h>   // exit
 
+#if 0
 #ifdef MATH_H_CLIB
 #include <math.h>     // sqrt, pow
 #else
 #include <cmath>     // sqrt, pow
 #endif
+#endif
+
+#include <cmath>     // sqrt, pow
 
 #include <limits.h>   // INT_MIN
 #include <float.h>    // FLT_MIN
