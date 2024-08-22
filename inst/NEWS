@@ -1,7 +1,10 @@
 Change history of package msa:
 ==============================
 
-Version 1.37.1:
+Version 1.37.3:
+- fix of major bug in the Muscle interface
+
+Version 1.37.2:
 - further fix of ClustalOmega makefile and source code to ensure compatibility
   with new Rcpp version (further adaptations for MacOS platform)
 

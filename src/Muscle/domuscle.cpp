@@ -299,6 +299,8 @@ void Run(MuscleInput *msaInput, MuscleOutput *msaOutput)
 	else
 		DoMuscle(msaInput, msaOutput);
 
+	MSA::Reset(); // https://github.com/UBod/msa/issues/30
+
 #if	TIMING
 	extern TICKS g_ticksDP;
 	extern TICKS g_ticksObjScore;

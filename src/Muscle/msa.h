@@ -110,6 +110,10 @@ public:
 		{
 		FreeAll();
 		}
+	static void Reset()
+		{
+		m_uIdCount = 0; // https://github.com/UBod/msa/issues/30
+		}
 	unsigned GetSeqCount() const
 		{
 		return m_uSeqCount;
