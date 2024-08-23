@@ -19,7 +19,8 @@ msaPrettyPrint <- function(x, y, output=c("pdf", "tex", "dvi", "asis"),
                                            "left", "right"),
                            showNames=c("left", "right", "none"),
                            showNumbering=c("right", "left", "none"),
-                           showLegend=TRUE, furtherCode=NA, verbose=FALSE)
+                           showLegend=TRUE, furtherCode=NA, verbose=FALSE,
+                           index=TRUE)
 {
     xname <- deparse(substitute(x))
     output <- match.arg(output)
@@ -398,7 +399,7 @@ msaPrettyPrint <- function(x, y, output=c("pdf", "tex", "dvi", "asis"),
 
             texi2dvi(texfile, quiet=!verbose, pdf=identical(output, "pdf"),
                      texinputs=system.file("tex", package="msa"),
-                     clean=TRUE, index=FALSE)
+                     clean=TRUE, index=index)
         }
 
         if (verbose)

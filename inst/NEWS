@@ -1,6 +1,11 @@
 Change history of package msa:
 ==============================
 
+Version 1.37.4:
+- change of interface of msaPrettyPrint() function in order to allow for a
+  workaround for texi2dvi() problems (using quiet=TRUE and index=FALSE together
+  throws an error)
+
 Version 1.37.3:
 - fix of major bug in the Muscle interface
 

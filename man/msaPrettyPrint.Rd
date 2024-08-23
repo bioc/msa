@@ -27,7 +27,7 @@
                                    "right"),
                    showNames=c("left", "right", "none"),
                    showNumbering=c("right", "left", "none"),
-                   showLegend=TRUE, furtherCode=NA, verbose=FALSE)
+                   showLegend=TRUE, furtherCode=NA, verbose=FALSE, index=TRUE)
 }
 \arguments{
   \item{x}{an object of class \code{\linkS4class{MultipleAlignment}},
@@ -146,6 +146,9 @@
       \item{verbose}{if \code{TRUE} (default), progress messages are
 	printed and also the output of running (PDF)LaTeX (if
 	applicable) is printed to the R session.}
+      \item{index}{argument to be forwarded to \code{\link{texi2dvi}};
+        normally, \code{index=FALSE} would be sufficient, but this might
+        create problems in conjunction with \code{verbose=FALSE}.}
 }
 \details{The \code{msaPrettyPrint} function writes a multiple alignment
   to a \code{.fasta} file and creates LaTeX code for
